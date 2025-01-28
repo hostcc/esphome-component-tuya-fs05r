@@ -1,0 +1,27 @@
+---
+esphome:
+  name: test-host
+  on_boot:
+    then:
+      - light.turn_on: test
+
+host:
+
+api:
+
+logger:
+  level: VERY_VERBOSE
+
+uart:
+  port: /dev/null
+  baud_rate: 115200
+  
+external_components:
+  - source:
+      type: local
+      path: ../components/
+
+light:
+  - platform: tuya_fs05r
+    id: test
+    output_id: test_output
