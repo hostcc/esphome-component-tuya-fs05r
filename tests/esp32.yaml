@@ -1,0 +1,31 @@
+---
+esphome:
+  name: test-esp32
+  on_boot:
+    priority: -10
+    then:
+      - light.turn_on: test
+
+esp32:
+  board: esp32dev
+
+api:
+wifi:
+  ap:
+
+uart:
+  rx_pin: GPIO3
+  tx_pin: GPIO1
+  baud_rate: 9600
+  
+external_components:
+  - source:
+      type: local
+      path: ../components/
+
+light:
+  - platform: tuya_fs05r
+    id: test
+    output_id: test_output
+    min_value: 10
+    max_value: 11
